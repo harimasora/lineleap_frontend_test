@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lineleap_frontend_test/presentation/home/widgets/home_events.dart';
 import 'package:lineleap_frontend_test/presentation/home/widgets/home_hero.dart';
+import 'package:lineleap_frontend_test/presentation/utils/responsive_vertical_spacing.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({Key? key}) : super(key: key);
@@ -7,10 +9,15 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        children: const [
-          HomeHero(),
-        ],
+      child: Container(
+        color: const Color.fromRGBO(0, 23, 46, 1),
+        child: Column(
+          children: const [
+            HomeHero(),
+            ResponsiveVerticalSpacing(),
+            HomeEvents(),
+          ],
+        ),
       ),
     );
   }
