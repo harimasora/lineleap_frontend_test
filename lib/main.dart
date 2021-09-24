@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lineleap_frontend_test/presentation/utils/responsive_widget.dart';
+import 'package:lineleap_frontend_test/presentation/home/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,26 +12,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ResponsiveWidget(
-        largeScreen: Scaffold(
-          appBar: AppBar(
-            title: const Text('Large'),
-          ),
-        ),
-        mediumScreen: Scaffold(
-          appBar: AppBar(
-            title: const Text('Medium'),
-          ),
-        ),
-        smallScreen: Scaffold(
-          appBar: AppBar(
-            title: const Text('Small'),
-          ),
-        ),
-      ),
+      home: HomePage(),
     );
   }
 }
