@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 
 class ResponsiveWidget extends StatelessWidget {
-  // Large screen is any screen whose width is more than 1200 pixels
+  static double largeScreenBreakpoint = 1120;
+  static double mediumScreenBreakpoint = 800;
+
+  /// Large screen is any screen whose width is more than [largeScreenBreakpoint] pixels
   static bool isLargeScreen(BuildContext context) {
-    return MediaQuery.of(context).size.width > 1200;
+    return MediaQuery.of(context).size.width > largeScreenBreakpoint;
   }
 
-  // Medium screen is any screen whose width is less than 1200 pixels, and more than 800 pixels
+  /// Medium screen is any screen whose width is less than [largeScreenBreakpoint] pixels, and more than [mediumScreenBreakpoint] pixels
   static bool isMediumScreen(BuildContext context) {
-    return MediaQuery.of(context).size.width > 800 && MediaQuery.of(context).size.width < 1200;
+    return MediaQuery.of(context).size.width > mediumScreenBreakpoint &&
+        MediaQuery.of(context).size.width < largeScreenBreakpoint;
   }
 
-  // Small screen is any screen whose width is less than 800 pixels
+  /// Small screen is any screen whose width is less than [mediumScreenBreakpoint] pixels
   static bool isSmallScreen(BuildContext context) {
-    return MediaQuery.of(context).size.width < 800;
+    return MediaQuery.of(context).size.width < mediumScreenBreakpoint;
   }
 
   final Widget largeScreen;
@@ -24,11 +28,10 @@ class ResponsiveWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Returns the widget which is more appropriate for the screen size
     return LayoutBuilder(builder: (context, constraints) {
-      if (constraints.maxWidth > 1200) {
+      if (constraints.maxWidth > largeScreenBreakpoint) {
         return largeScreen;
-      } else if (constraints.maxWidth > 800 && constraints.maxWidth < 1200) {
+      } else if (constraints.maxWidth > mediumScreenBreakpoint && constraints.maxWidth < largeScreenBreakpoint) {
         //if medium screen not available, then return large screen
         return mediumScreen ?? largeScreen;
       } else {
@@ -36,5 +39,28 @@ class ResponsiveWidget extends StatelessWidget {
         return smallScreen ?? mediumScreen ?? largeScreen;
       }
     });
+  }
+}
+
+class ResponsiveContainer extends StatelessWidget {
+  final Widget child;
+  const ResponsiveContainer({required this.child, Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    late double maxWidth;
+    if (ResponsiveWidget.isSmallScreen(context)) {
+      maxWidth = double.infinity;
+    } else if (ResponsiveWidget.isMediumScreen(context)) {
+      maxWidth = ResponsiveWidget.mediumScreenBreakpoint;
+    } else {
+      maxWidth = ResponsiveWidget.largeScreenBreakpoint;
+    }
+    return Center(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: maxWidth),
+        child: child,
+      ),
+    );
   }
 }

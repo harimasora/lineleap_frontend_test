@@ -12,26 +12,29 @@ class HomeHeader extends StatelessWidget {
         child: SizedBox(
           height: ResponsiveWidget.isSmallScreen(context) ? null : 90.0,
           child: !ResponsiveWidget.isSmallScreen(context)
-              ? Row(
-                  children: [
-                    const Text('Brand Embassors'),
-                    const Text('Venue Owners'),
-                    const Text('Buy Passes'),
-                    const Icon(Icons.search),
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: const Text('Download the App'),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Row(
-                        children: const [
-                          Icon(Icons.person),
-                          Text('My account'),
-                        ],
+              ? ResponsiveContainer(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text('Brand Embassors'),
+                      const Text('Venue Owners'),
+                      const Text('Buy Passes'),
+                      const Icon(Icons.search),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: const Text('Download the App'),
                       ),
-                    ),
-                  ],
+                      TextButton(
+                        onPressed: () {},
+                        child: Row(
+                          children: const [
+                            Icon(Icons.person),
+                            Text('My account'),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 )
               : Row(
                   children: [
