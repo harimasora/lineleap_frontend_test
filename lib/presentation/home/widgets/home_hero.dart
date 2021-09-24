@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:lineleap_frontend_test/presentation/utils/responsive_container.dart';
 import 'package:lineleap_frontend_test/presentation/utils/responsive_widget.dart';
 
 class HomeHero extends StatelessWidget {
