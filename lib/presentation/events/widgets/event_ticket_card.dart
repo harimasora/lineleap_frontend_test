@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lineleap_frontend_test/presentation/utils/constants.dart';
+import 'package:lineleap_frontend_test/presentation/utils/responsive_widget.dart';
 import 'package:lineleap_frontend_test/presentation/utils/separated_column.dart';
 
 const _buyNowButtonColor = Color.fromRGBO(6, 130, 255, 1);
@@ -36,7 +37,7 @@ class EventTicketCard extends StatelessWidget {
             AspectRatio(
               aspectRatio: 352 / 251,
               child: Padding(
-                padding: const EdgeInsets.all(24),
+                padding: ResponsiveWidget.isLargeScreen(context) ? const EdgeInsets.all(24) : const EdgeInsets.all(16),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,9 +49,9 @@ class EventTicketCard extends StatelessWidget {
                         Text(
                           title,
                           textAlign: TextAlign.left,
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.white,
-                            fontSize: 24,
+                            fontSize: ResponsiveWidget.isLargeScreen(context) ? 24 : 16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -63,16 +64,18 @@ class EventTicketCard extends StatelessWidget {
                     const Spacer(),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        padding: ResponsiveWidget.isLargeScreen(context)
+                            ? const EdgeInsets.symmetric(horizontal: 16, vertical: 12)
+                            : const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         primary: _buyNowButtonColor,
                       ),
                       onPressed: () {},
-                      child: const Text(
+                      child: Text(
                         'From \$99',
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 18,
+                          fontSize: ResponsiveWidget.isLargeScreen(context) ? 18 : 12,
                         ),
                       ),
                     ),
@@ -101,7 +104,7 @@ class _EventTicketBodyText extends StatelessWidget {
       textAlign: TextAlign.left,
       style: TextStyle(
         color: Colors.white.withOpacity(0.5),
-        fontSize: 16,
+        fontSize: ResponsiveWidget.isLargeScreen(context) ? 16 : 12,
       ),
     );
   }

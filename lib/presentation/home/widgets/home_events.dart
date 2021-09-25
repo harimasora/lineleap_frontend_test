@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lineleap_frontend_test/presentation/events/widgets/event_ticket_card.dart';
 import 'package:lineleap_frontend_test/presentation/utils/responsive_container.dart';
+import 'package:lineleap_frontend_test/presentation/utils/responsive_widget.dart';
 
 const events = <EventTicketCard>[
   EventTicketCard(
@@ -44,19 +45,20 @@ class HomeEvents extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double baseSpacing = ResponsiveWidget.isLargeScreen(context) ? 32 : 16;
     return ResponsiveContainer(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 80.0),
+        padding: EdgeInsets.symmetric(vertical: ResponsiveWidget.isLargeScreen(context) ? 80 : 40),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text(
+            Text(
               'Event Tickets',
               textAlign: TextAlign.left,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 32,
+                fontSize: ResponsiveWidget.isLargeScreen(context) ? 32 : 24,
                 fontWeight: FontWeight.w900,
               ),
             ),
@@ -65,10 +67,10 @@ class HomeEvents extends StatelessWidget {
               shrinkWrap: true,
               itemCount: events.length,
               physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
-                crossAxisSpacing: 32,
-                mainAxisSpacing: 32,
+                crossAxisSpacing: baseSpacing,
+                mainAxisSpacing: baseSpacing,
                 childAspectRatio: 352 / 449,
               ),
               itemBuilder: (BuildContext context, int index) {
@@ -87,12 +89,12 @@ class HomeEvents extends StatelessWidget {
                         primary: Colors.white.withOpacity(0.2),
                         padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 16),
                       ),
-                      child: const Text(
+                      child: Text(
                         'See 6 More',
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 24,
+                          fontSize: ResponsiveWidget.isLargeScreen(context) ? 24 : 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

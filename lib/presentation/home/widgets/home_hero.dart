@@ -5,8 +5,6 @@ import 'package:lineleap_frontend_test/presentation/utils/constants.dart';
 import 'package:lineleap_frontend_test/presentation/utils/responsive_container.dart';
 import 'package:lineleap_frontend_test/presentation/utils/responsive_widget.dart';
 
-const _hintStyle = TextStyle(fontSize: 20);
-
 class HomeHero extends StatelessWidget {
   const HomeHero({
     Key? key,
@@ -52,22 +50,23 @@ class HomeHero extends StatelessWidget {
 }
 
 class _HeroSearchFormField extends StatelessWidget {
-  const _HeroSearchFormField({Key? key}) : super(key: key);
+  final double basePadding;
+  const _HeroSearchFormField({Key? key, this.basePadding = 24}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
         prefixIcon: Row(
           children: [
-            const SizedBox(width: 24),
-            Image.asset('assets/search_dark.png', width: 24),
-            const SizedBox(width: 24),
+            SizedBox(width: basePadding),
+            Image.asset('assets/search_dark.png', width: basePadding),
+            SizedBox(width: basePadding),
           ],
         ),
-        prefixIconConstraints: const BoxConstraints(maxHeight: 24, maxWidth: 24 * 3),
+        prefixIconConstraints: BoxConstraints(maxHeight: basePadding, maxWidth: basePadding * 3),
         hintText: 'Search Events, Venues, Artists and Passes',
-        hintStyle: _hintStyle,
-        contentPadding: const EdgeInsets.symmetric(vertical: 24),
+        hintStyle: TextStyle(fontSize: ResponsiveWidget.isLargeScreen(context) ? 20 : 16),
+        contentPadding: EdgeInsets.symmetric(vertical: basePadding),
         border: InputBorder.none,
       ),
     );
@@ -75,25 +74,26 @@ class _HeroSearchFormField extends StatelessWidget {
 }
 
 class _HeroLocationPicker extends StatelessWidget {
-  const _HeroLocationPicker({Key? key}) : super(key: key);
+  final double basePadding;
+  const _HeroLocationPicker({Key? key, this.basePadding = 24}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const SizedBox(width: 24),
-        Image.asset('assets/map_pin.png', width: 24),
-        const SizedBox(width: 24),
+        SizedBox(width: basePadding),
+        Image.asset('assets/map_pin.png', width: basePadding),
+        SizedBox(width: basePadding),
         DropdownButton(
           icon: Row(
             children: [
-              const SizedBox(width: 16),
-              Image.asset('assets/chevron_down.png', width: 24),
-              const SizedBox(width: 52),
+              SizedBox(width: basePadding * 2 / 3),
+              Image.asset('assets/chevron_down.png', width: basePadding),
+              SizedBox(width: basePadding * 7 / 3),
             ],
           ),
           underline: const SizedBox.shrink(),
-          hint: const Text('All locations', style: _hintStyle),
+          hint: Text('All locations', style: TextStyle(fontSize: ResponsiveWidget.isLargeScreen(context) ? 20 : 16)),
           items: const [],
         ),
       ],
@@ -102,7 +102,8 @@ class _HeroLocationPicker extends StatelessWidget {
 }
 
 class _HeroSearchButton extends StatelessWidget {
-  const _HeroSearchButton({Key? key}) : super(key: key);
+  final double basePadding;
+  const _HeroSearchButton({Key? key, this.basePadding = 24}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -110,13 +111,13 @@ class _HeroSearchButton extends StatelessWidget {
       onTap: () {},
       child: Container(
         color: callToActionButtonColor,
-        child: const Padding(
-          padding: EdgeInsets.all(24.0),
+        child: Padding(
+          padding: EdgeInsets.all(basePadding),
           child: Text(
             'Search',
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 18,
+              fontSize: ResponsiveWidget.isLargeScreen(context) ? 18 : 14,
               fontWeight: FontWeight.w900,
               color: Colors.white,
             ),
@@ -132,27 +133,35 @@ class _HeroActionsBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double basePadding;
+    if (ResponsiveWidget.isSmallScreen(context)) {
+      basePadding = 8;
+    } else if (ResponsiveWidget.isMediumScreen(context)) {
+      basePadding = 16;
+    } else {
+      basePadding = 24;
+    }
     return ClipRRect(
       borderRadius: BorderRadius.circular(8),
       child: Container(
-        height: 24 * 3,
+        height: basePadding * 3,
         color: Colors.white,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: const [
+          children: [
             Expanded(
               flex: 5,
-              child: _HeroSearchFormField(),
+              child: _HeroSearchFormField(basePadding: basePadding),
             ),
-            _ActionBarVerticalDevider(),
+            _ActionBarVerticalDevider(basePadding: basePadding),
             Expanded(
               flex: 2,
-              child: _HeroLocationPicker(),
+              child: _HeroLocationPicker(basePadding: basePadding),
             ),
             Expanded(
               flex: 1,
-              child: _HeroSearchButton(),
+              child: _HeroSearchButton(basePadding: basePadding),
             ),
           ],
         ),
@@ -162,14 +171,16 @@ class _HeroActionsBar extends StatelessWidget {
 }
 
 class _ActionBarVerticalDevider extends StatelessWidget {
+  final double basePadding;
   const _ActionBarVerticalDevider({
+    this.basePadding = 24,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 24 * 1.5,
+      height: basePadding * 1.5,
       width: 1,
       color: scaffoldBackgroundColor.withOpacity(0.25),
     );

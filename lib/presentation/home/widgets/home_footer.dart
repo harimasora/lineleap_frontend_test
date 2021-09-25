@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lineleap_frontend_test/presentation/utils/responsive_container.dart';
+import 'package:lineleap_frontend_test/presentation/utils/responsive_widget.dart';
 import 'package:lineleap_frontend_test/presentation/utils/separated_column.dart';
 
 class HomeFooter extends StatelessWidget {
@@ -8,7 +9,9 @@ class HomeFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 80, bottom: 40),
+      padding: ResponsiveWidget.isLargeScreen(context)
+          ? const EdgeInsets.only(top: 80, bottom: 40)
+          : const EdgeInsets.only(top: 32, bottom: 32),
       child: ResponsiveContainer(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
