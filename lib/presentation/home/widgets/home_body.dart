@@ -4,7 +4,6 @@ import 'package:lineleap_frontend_test/presentation/home/widgets/home_download.d
 import 'package:lineleap_frontend_test/presentation/home/widgets/home_events.dart';
 import 'package:lineleap_frontend_test/presentation/home/widgets/home_footer.dart';
 import 'package:lineleap_frontend_test/presentation/home/widgets/home_hero.dart';
-import 'package:lineleap_frontend_test/presentation/utils/responsive_vertical_spacing.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({Key? key}) : super(key: key);
@@ -17,7 +16,6 @@ class HomeBody extends StatelessWidget {
         child: Column(
           children: const [
             HomeHero(),
-            ResponsiveVerticalSpacing(),
             HomeEvents(),
             HomeDownload(),
             HomeFooter(),
