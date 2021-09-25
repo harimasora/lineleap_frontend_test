@@ -21,7 +21,6 @@ class HomeEvents extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          // Figma Flutter Generator EventticketsWidget - TEXT
           const Text(
             'Event Tickets',
             textAlign: TextAlign.left,

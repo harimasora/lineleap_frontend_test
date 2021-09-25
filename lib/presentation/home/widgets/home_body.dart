@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lineleap_frontend_test/presentation/home/widgets/home_download.dart';
 import 'package:lineleap_frontend_test/presentation/home/widgets/home_events.dart';
 import 'package:lineleap_frontend_test/presentation/home/widgets/home_hero.dart';
 import 'package:lineleap_frontend_test/presentation/utils/responsive_vertical_spacing.dart';
@@ -16,6 +17,7 @@ class HomeBody extends StatelessWidget {
             HomeHero(),
             ResponsiveVerticalSpacing(),
             HomeEvents(),
+            HomeDownload(),
           ],
         ),
       ),
