@@ -45,63 +45,64 @@ class HomeEvents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveContainer(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(height: 80),
-          const Text(
-            'Event Tickets',
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 32,
-              fontWeight: FontWeight.w900,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 80.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text(
+              'Event Tickets',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 32,
+                fontWeight: FontWeight.w900,
+              ),
             ),
-          ),
-          const SizedBox(height: 32),
-          GridView.builder(
-            shrinkWrap: true,
-            itemCount: events.length,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              crossAxisSpacing: 32,
-              mainAxisSpacing: 32,
-              childAspectRatio: 352 / 449,
-            ),
-            itemBuilder: (BuildContext context, int index) {
-              return events[index];
-            },
-          ),
-          const SizedBox(height: 64),
-          Center(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                return SizedBox(
-                  width: constraints.maxWidth / 2,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white.withOpacity(0.2),
-                      padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 16),
-                    ),
-                    child: const Text(
-                      'See 6 More',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                );
+            const SizedBox(height: 32),
+            GridView.builder(
+              shrinkWrap: true,
+              itemCount: events.length,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                crossAxisSpacing: 32,
+                mainAxisSpacing: 32,
+                childAspectRatio: 352 / 449,
+              ),
+              itemBuilder: (BuildContext context, int index) {
+                return events[index];
               },
             ),
-          ),
-          const SizedBox(height: 80),
-        ],
+            const SizedBox(height: 64),
+            Center(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return SizedBox(
+                    width: constraints.maxWidth / 2,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white.withOpacity(0.2),
+                        padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 16),
+                      ),
+                      child: const Text(
+                        'See 6 More',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
