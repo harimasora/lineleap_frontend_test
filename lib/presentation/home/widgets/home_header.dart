@@ -41,7 +41,7 @@ class HomeHeader extends StatelessWidget {
                           IconButton(
                             onPressed: () {},
                             icon: Image.asset(
-                              'assets/search.png',
+                              'assets/search_light.png',
                               width: 24,
                             ),
                           ),
