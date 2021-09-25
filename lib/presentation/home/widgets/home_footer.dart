@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lineleap_frontend_test/presentation/utils/responsive_container.dart';
+import 'package:lineleap_frontend_test/presentation/utils/separated_column.dart';
 
 class HomeFooter extends StatelessWidget {
   const HomeFooter({Key? key}) : super(key: key);
@@ -104,17 +105,9 @@ class FooterColumn extends StatelessWidget {
         ),
       )
     ];
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: List.generate(
-        items.length + items.length - 1,
-        (index) => index == 0
-            ? items[0]
-            : index % 2 == 1
-                ? const SizedBox(height: 16)
-                : items[index ~/ 2],
-      ),
+    return SeparatedColumn(
+      children: items,
+      verticalSpacing: 16,
     );
   }
 }

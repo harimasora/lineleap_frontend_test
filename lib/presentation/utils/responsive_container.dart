@@ -17,6 +17,7 @@ class ResponsiveContainer extends StatelessWidget {
       maxWidth = ResponsiveWidget.largeScreenBreakpoint;
     }
     return Center(
+      heightFactor: 1,
       child: ConstrainedBox(
         constraints: BoxConstraints(maxWidth: maxWidth),
         child: child,
