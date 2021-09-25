@@ -88,7 +88,6 @@ class FooterColumn extends StatelessWidget {
         textAlign: TextAlign.left,
         style: const TextStyle(
           color: Colors.white,
-          fontFamily: 'Lato',
           fontSize: 24,
           fontWeight: FontWeight.bold,
         ),
@@ -99,7 +98,6 @@ class FooterColumn extends StatelessWidget {
           textAlign: TextAlign.left,
           style: TextStyle(
             color: Colors.white.withOpacity(0.5),
-            fontFamily: 'Lato',
             fontSize: 16,
           ),
         ),

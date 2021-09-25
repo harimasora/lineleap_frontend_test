@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lineleap_frontend_test/presentation/utils/constants.dart';
 import 'package:lineleap_frontend_test/presentation/utils/separated_column.dart';
 
 const _buyNowButtonColor = Color.fromRGBO(6, 130, 255, 1);
@@ -19,7 +20,7 @@ class EventTicketCard extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(8),
       child: Container(
-        color: const Color.fromRGBO(25, 46, 67, 1),
+        color: secondaryBackgroundColor,
         // height: 352+251,
         child: Column(
           mainAxisSize: MainAxisSize.min,
